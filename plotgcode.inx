@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+  <_name>Export GCode</_name>
+  <id>com.jacmb.plotgcode</id>
+  <dependency type="executable" location="extensions">inkex.py</dependency>
+  <dependency type="executable" location="extensions">bezmisc.py</dependency>
+  <dependency type="executable" location="extensions">cspsubdiv.py</dependency>
+  <dependency type="executable" location="extensions">cubicsuperpath.py</dependency>
+  <dependency type="executable" location="extensions">ffgeom.py</dependency>
+  <dependency type="executable" location="extensions">shapes.py</dependency>
+  <dependency type="executable" location="extensions">simplepath.py</dependency>
+  <dependency type="executable" location="extensions">simpletransform.py</dependency>
+  <dependency type="executable" location="extensions">plotgcode.py</dependency>
+
+  <_param name="desc_ref" type="description" appearance="header">Pen Range</_param>
+  <param name="pen-up" type="int" min="0" max="30" _gui-text="Pen up">26</param>
+  <param name="pen-down" type="int" min="0" max="30" _gui-text="Pen down">5</param>
+
+  <_param name="desc_ref" type="description" appearance="header">Pen speed</_param>
+  <param name="feed-rate-up" type="int" min="0" max="4800" _gui-text="While up">3200</param>
+  <param name="feed-rate-down" type="int" min="0" max="4800" _gui-text="While down">3200</param>
+  <param name="pen-rate" type="int" min="0" max="4800" _gui-text="Lower/raise">3200</param>
+
+  <_param name="desc_ref" type="description" appearance="header">Paint Dipping</_param>
+  <param name="does-dip" type="boolean" _gui-text="Dip in paint?"></param>
+  <param name="dip-when" type="int" _gui-text="After how many shapes?">0</param>
+
+  <_param name="desc_ref" type="description" appearance="header">Code</_param>
+  <param name="preamble" type="string" _gui-text="Preamble">G21(Set to mm)</param>
+  <param name="postamble" type="string" _gui-text="Postamble">G28(Return home)</param>
+  <param name="gcode-file" type="string" _gui-text="G-code path">/home/pi/Documents/gcode/</param>
+  
+  <effect>
+    <object-type>all</object-type>
+    <effects-menu>
+       <submenu _name="Plotter"/>
+    </effects-menu>
+  </effect>
+  <script>
+    <command reldir="extensions" interpreter="python">plotgcode.py</command>
+  </script>
+</inkscape-extension>
